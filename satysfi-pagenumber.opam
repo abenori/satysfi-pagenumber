@@ -1,0 +1,31 @@
+opam-version: "2.0"
+name: "satysfi-pagenumber"
+version: "1.0.0"
+synopsis: "A SATySFi package for number of pages"
+description: """
+Brilliant description comes here.
+"""
+maintainer: "Noriyuki Abe <abenori@users.osdn.me>"
+authors: "Noriyuki Abe <abenori@users.osdn.me>"
+license: "BSD-2-Clause-FreeBSD"
+homepage: "https://github.com/abenori/satysfi-pagenumber"
+dev-repo: "git+https://github.com/abenori/satysfi-pagenumber.git"
+bug-reports: "https://github.com/abenori/satysfi-pagenumber/issues"
+depends: [
+  "satysfi" { >= "0.0.5" }
+  "satyrographos" { >= "0.0.2.6" & < "0.0.3" }
+
+  # If your library depends on other libraries, please write down here
+]
+build: [
+  ["satyrographos" "opam" "build"
+   "--name" "pagenumber"
+   "--prefix" "%{prefix}%"
+   "--script" "%{build}%/Satyristes"]
+]
+install: [
+  ["satyrographos" "opam" "install"
+   "--name" "pagenumber"
+   "--prefix" "%{prefix}%"
+   "--script" "%{build}%/Satyristes"]
+]

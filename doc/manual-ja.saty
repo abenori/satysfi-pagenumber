@@ -1,0 +1,66 @@
+@require: stdja
+@require: itemize
+
+document (|
+  title = {PageNumber};
+  author = {Noriyuki Abe};
+  show-title = false;
+  show-toc = false;
+|) '<
+  +section ?:(`pagenumber`) {ページ番号} <
+    +p{
+      文書内でページ番号がリセットされるということがあります．
+      例えば前付きでは独立なページ数を設定しておき，本文ではまた1から始まる，という具合です．
+      さらに，ページ数の出力も前付きではローマ数字だが本文内ではアラビア数字になる，というように，出力形式が変わることもあります．
+      本パッケージ内の\code(`PageNumber`);モジュールを使うと以下のページ数の管理が行えます．
+    }
+    +listing{
+      * 真のページ数：先頭ページから常に一つずつ増えていくページ数．
+      * みかけのページ数：必要に応じてリセットされているかもしれないページ数．ノンブルとして出力されるのはこっち．
+      * ページ数文字列：実際に出力されるページ数を文字列で表したもの．
+    }
+    +p{
+      まず\code(`PageNumber`);モジュールを読んでおきます．
+    }
+    +code(```
+      @require: pagestyle/pagenumber
+    ```);
+    +p{
+      現在のみかけのページ数を変更するには，\code(`set-page-number`);を使います．
+    }
+    +code(```
+      let page-number-b = PageNumber.set-page-number pn % このページのページ数をpnに変更
+      % page-number-bはinline-nil相当のinline-boxes
+      % これを本文に埋め込む．
+    ```);
+    +p{
+      文書内で変更するための\code(`\set-page-number`);もあります．
+    }
+    +code(```
+      +p{
+       ...
+       \PageNumber.set-page-number(1);
+       ...
+      }
+    ```);
+    +p{
+      ページ出力形式は\code(`int -> string`);という関数です．
+      これは\code(`set-page-formatter`);で設定します．
+    }
+    +code(```
+      let page-number-b = PageNumber.set-page-format arabic
+      % 本文に埋め込むのを忘れないように．
+    ```);
+    +p{
+      現在のみかけのページ数を取得するには\code(`get-page-number`);を，現在のページ数文字列を取得するには\code(`get-page-string`);を使います．
+      引数にはラベル\code(`page-number`);を持つレコードを与えます．
+      これには真のページ数を入れておきます．
+      要するに，\code(`page-break`);プリミティヴの第二引数に渡される引数です．
+    }
+    +code(```
+      let page-number = PageNumber.get-page-number pbinfo
+      let page-str = PageNumber.get-page-string pbinfo
+      % 本文に埋め込むのを忘れないように．
+    ```);
+  >
+>
