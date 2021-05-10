@@ -45,7 +45,7 @@ document (|
     ```);
     +p{
       ページ出力形式は\code(`int -> string`);という関数です．
-      これは\code(`set-page-formatter`);で設定します．
+      これは\code(`set-page-format`);で設定します．
     }
     +code(```
       let page-number-b = PageNumber.set-page-format arabic
@@ -53,14 +53,12 @@ document (|
     ```);
     +p{
       現在のみかけのページ数を取得するには\code(`get-page-number`);を，現在のページ数文字列を取得するには\code(`get-page-string`);を使います．
-      引数にはラベル\code(`page-number`);を持つレコードを与えます．
-      これには真のページ数を入れておきます．
-      要するに，\code(`page-break`);プリミティヴの第二引数に渡される引数です．
+      引数には真のページ数をを与えます．
+      \code(`page-break`);プリミティヴの第二引数に渡される引数を\code(`pbinfo`);とすると\code(`pbinfo#page-number`);で取得できます．
     }
     +code(```
-      let page-number = PageNumber.get-page-number pbinfo
-      let page-str = PageNumber.get-page-string pbinfo
-      % 本文に埋め込むのを忘れないように．
+      let page-number = PageNumber.get-page-number pbinfo#page-number
+      let page-str = PageNumber.get-page-string pbinfo#page-number
     ```);
   >
 >

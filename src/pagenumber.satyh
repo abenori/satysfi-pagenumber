@@ -1,7 +1,7 @@
 module PageNumber : sig
-  val get-page-number : (|page-number : int|) -> int
+  val get-page-number : int -> int
   val set-page-number : int -> inline-boxes
-  val get-page-string : (|page-number : int|) -> string
+  val get-page-string : int -> string
   val set-page-format : (int -> string) -> inline-boxes
   val \set-page-number : [int] inline-cmd
   val \set-page-format : [(int -> string)] inline-cmd
@@ -10,8 +10,8 @@ end = struct
   let-mutable ref-page-adjust <- 0
   let-mutable ref-page-formatter <- arabic
   
-  let get-page-number pbinfo = pbinfo#page-number + !ref-page-adjust
-  let get-page-string pbinfo = !ref-page-formatter (get-page-number pbinfo)
+  let get-page-number pnum = pnum + !ref-page-adjust
+  let get-page-string pnum = !ref-page-formatter (get-page-number pnum)
   
   let set-page-number pn =
     let hook pbinfo _ = 
