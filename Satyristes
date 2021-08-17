@@ -39,5 +39,4 @@
   (dependencies
     ((pagenumber ()) ; the main library
      (dist ()) ; Standard library
-     (base ()) ; Base library
     )))

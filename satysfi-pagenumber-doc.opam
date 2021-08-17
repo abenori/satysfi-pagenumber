@@ -1,26 +1,21 @@
 opam-version: "2.0"
 name: "satysfi-pagenumber-doc"
 version: "1.0.0"
-synopsis: "Document of A Great SATySFi Package"
+synopsis: "Document of A package PageNumber"
 description: """
 Brilliant description comes here.
 """
-maintainer: "Your name <email@example.com>"
-authors: "Your name <email@example.com>"
-license: "MIT" # Choose what you want
-homepage: "https://github.com/<github-username>/satysfi-pagenumber"
-dev-repo: "git+https://github.com/<github-username>/satysfi-pagenumber.git"
-bug-reports: "https://github.com/<github-username>/satysfi-pagenumber/issues"
+maintainer: "Noriyuki Abe"
+authors: "Noriyuki Abe"
+license: "BSD-2-Clause-FreeBSD"
+homepage: "https://github.com/abenori/satysfi-pagenumber"
+dev-repo: "git+https://github.com/abenori/satysfi-pagenumber.git"
+bug-reports: "https://github.com/abenori/satysfi-pagenumber/issues"
 depends: [
   "satysfi" { >= "0.0.5" }
   "satyrographos" { >= "0.0.2.6" & < "0.0.3" }
-
-  # You may want to include the corresponding library
-  "satysfi-pagenumber" {= "%{version}%"}
-
-  # Other libraries
   "satysfi-dist"
-  "satysfi-base"
+  "satysfi-pagenumber"
 ]
 build: [
   ["satyrographos" "opam" "build"
