@@ -2,9 +2,7 @@ opam-version: "2.0"
 name: "satysfi-pagenumber-doc"
 version: "1.0.0"
 synopsis: "Document of A package PageNumber"
-description: """
-Brilliant description comes here.
-"""
+description: """Document of A package PageNumber"""
 maintainer: "Noriyuki Abe"
 authors: "Noriyuki Abe"
 license: "BSD-2-Clause-FreeBSD"
@@ -12,10 +10,10 @@ homepage: "https://github.com/abenori/satysfi-pagenumber"
 dev-repo: "git+https://github.com/abenori/satysfi-pagenumber.git"
 bug-reports: "https://github.com/abenori/satysfi-pagenumber/issues"
 depends: [
-  "satysfi" { >= "0.0.5" }
+  "satysfi" { >= "0.0.5" < "0.0.7" }
   "satyrographos" { >= "0.0.2.6" & < "0.0.3" }
   "satysfi-dist"
-  "satysfi-pagenumber"
+  "satysfi-pagenumber" {= "%{version}%"}
 ]
 build: [
   ["satyrographos" "opam" "build"
